@@ -29,8 +29,8 @@ public class BoardDAO extends JDBConnection {
 				board.setTitle( rs.getString("title") );
 				board.setWriter( rs.getString("writer") );
 				board.setContent( rs.getString("content") );
-				board.setRegDate( rs.getTimestamp("reg_date") );
-				board.setUpdDate( rs.getTimestamp("upd_date") );
+				board.setRegDate( rs.getString("reg_date") );
+				board.setUpdDate( rs.getString("upd_date") );
 				
 				boardList.add(board);
 			}
@@ -56,12 +56,12 @@ public class BoardDAO extends JDBConnection {
 
 			// 조회 결과 가져오기
 			if( rs.next() ) {
-				board.setNo( rs.getInt("board_no") );
+				board.setBoardNo( rs.getInt("board_no") );
 				board.setTitle( rs.getString("title") );
 				board.setWriter( rs.getString("writer") );
 				board.setContent( rs.getString("content") );
-				board.setRegDate( rs.getTimestamp("reg_date") );
-				board.setUpdDate( rs.getTimestamp("upd_date") );
+				board.setRegDate( rs.getString("reg_date") );
+				board.setUpdDate( rs.getString("upd_date") );
 			}
 			
 		} catch (SQLException e) {
@@ -72,7 +72,7 @@ public class BoardDAO extends JDBConnection {
 	}
 	
 	// 데이터 등록
-	public int insert(Board text) {
+	public int insert(Board board) {
 		int result = 0;
 		
 		String sql = " INSERT INTO board( title, writer, content ) "
@@ -80,9 +80,9 @@ public class BoardDAO extends JDBConnection {
 	
 		try {
 			psmt = con.prepareStatement(sql);			// 쿼리 실행 객체 생성
-			psmt.setString(1, text.getTitle());			// 1번 ? 에 제목을 매핑
-			psmt.setString(2, text.getWriter());		// 2번 ? 에 작성자을 매핑
-			psmt.setString(3, text.getContent());		// 3번 ? 에 내용을 매핑
+			psmt.setString(1, board.getTitle());			// 1번 ? 에 제목을 매핑
+			psmt.setString(2, board.getWriter());		// 2번 ? 에 작성자을 매핑
+			psmt.setString(3, board.getContent());		// 3번 ? 에 내용을 매핑
 			
 			result = psmt.executeUpdate();				// SQL 실행 요청, 적용된 데이터 개수를 받아옴
 														// 게시글 1개 쓰기 성공 시, result : 1
@@ -98,7 +98,7 @@ public class BoardDAO extends JDBConnection {
 	}
 	
 	// 데이터 수정
-	public int update(Board text) {
+	public int update(Board board) {
 		
 		int result = 0;
 		
@@ -112,10 +112,10 @@ public class BoardDAO extends JDBConnection {
 
 		try {
 			psmt = con.prepareStatement(sql);
-			psmt.setString(1, text.getTitle());			// 1번 ? 에 제목을 매핑
-			psmt.setString(2, text.getWriter());		// 2번 ? 에 작성자을 매핑
-			psmt.setString(3, text.getContent());		// 3번 ? 에 내용을 매핑
-			psmt.setInt(4, text.getNo());				// 4번 ? 에 게시글 번호를 매핑
+			psmt.setString(1, board.getTitle());			// 1번 ? 에 제목을 매핑
+			psmt.setString(2, board.getWriter());		// 2번 ? 에 작성자을 매핑
+			psmt.setString(3, board.getContent());		// 3번 ? 에 내용을 매핑
+			psmt.setInt(4, board.getBoardNo());				// 4번 ? 에 게시글 번호를 매핑
 			
 			result = psmt.executeUpdate();				// SQL 실행 요청, 적용된 데이터 개수를 받아옴
 														// 게시글 1개 수정 성공 시, result : 1
