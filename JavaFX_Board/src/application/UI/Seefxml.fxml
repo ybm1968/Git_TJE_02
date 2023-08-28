@@ -21,6 +21,7 @@
       <Label layoutX="44.0" layoutY="113.0" text="내용" />
       <Label layoutX="49.0" layoutY="57.0" text="순번" />
       <TextField fx:id="noSee" editable="false" layoutX="88.0" layoutY="53.0" />
-      <Button fx:id="delButton1" layoutX="494.0" layoutY="21.0" mnemonicParsing="false" onAction="#clickDelButton" text="게시글 삭제" />
+      <Button fx:id="updButton1" layoutX="494.0" layoutY="21.0" mnemonicParsing="false" onAction="#clickDelButton" text="게시글 수정" />
+      <Button fx:id="delButton11" layoutX="494.0" layoutY="53.0" mnemonicParsing="false" onAction="#clickDelButton" text="게시글 삭제" />
    </children>
 </AnchorPane>
