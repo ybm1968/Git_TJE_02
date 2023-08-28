@@ -149,7 +149,7 @@ public class BoardDAO extends JDBConnection {
 	public List<Board> selectList(int boardNo) {
 		return null;
 	}
-	
+	  
 }
 
 
