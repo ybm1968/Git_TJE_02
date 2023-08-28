@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Writefxml">
+   <children>
+      <Label layoutX="203.0" layoutY="28.0" text="게시글 쓰기">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <TextField fx:id="titleWrite" layoutX="114.0" layoutY="82.0" prefHeight="31.0" prefWidth="355.0" promptText="제목을 입력하세요." />
+      <Label layoutX="53.0" layoutY="83.0" text="제목">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="186.0" text="내용">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="contentWrite" layoutX="114.0" layoutY="187.0" prefHeight="177.0" prefWidth="355.0" promptText="내용을 입력하세요." />
+      <Label layoutX="35.0" layoutY="134.0" text="작성자">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="writerWrite" layoutX="114.0" layoutY="133.0" prefHeight="31.0" prefWidth="355.0" promptText="작성자를 입력하세요." />
+      <Button fx:id="writeDoneBut" layoutX="485.0" layoutY="335.0" mnemonicParsing="false" onAction="#clickWriteDoneBut" text="게시글 등록">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
