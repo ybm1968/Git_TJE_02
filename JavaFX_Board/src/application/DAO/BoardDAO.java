@@ -25,7 +25,7 @@ public class BoardDAO extends JDBConnection {
 			while( rs.next() ) {				// next() : 실행 결과의 다음 데이터로 이동
 				Board board = new Board();
 				
-				board.setNo( rs.getInt("board_no") );
+				board.setBoardNo( rs.getInt("board_no") );
 				board.setTitle( rs.getString("title") );
 				board.setWriter( rs.getString("writer") );
 				board.setContent( rs.getString("content") );

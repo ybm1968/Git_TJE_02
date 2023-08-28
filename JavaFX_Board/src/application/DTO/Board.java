@@ -1,80 +1,68 @@
 package application.DTO;
 
-import java.util.Date;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
-public class Board  {
+public class Board {
+
+	private SimpleIntegerProperty boardNo;
+	private SimpleStringProperty title;
+	private SimpleStringProperty writer;
+	private SimpleStringProperty content;
+	private SimpleStringProperty regDate;
+	private SimpleStringProperty updDate;
 	
-		private String title;
-		private String writer;
-		private String content;
-		private Date regDate;
-		private Date updDate;
-		private int no;
-		
-		public Board() {
-			this("제목없음", "글쓴이없음", "내용없음");
-		}
-		
-		
-		public Board(String writer, String content) {
-			this.writer = writer;
-			this.content = content;
-			this.regDate = new Date();
-			this.updDate = new Date();
-		}
-
-
-		public Board(String title, String writer, String content) {
-			this.title = title;
-			this.writer = writer;
-			this.content = content;
-			this.regDate = new Date();
-			this.updDate = new Date();
-		}
-
-
-		public int getNo() {
-			return no;
-		}
-		public void setNo(int no) {
-			this.no = no;
-		}
-		public String getTitle() {
-			return title;
-		}
-		public void setTitle(String title) {
-			this.title = title;
-		}
-		public String getWriter() {
-			return writer;
-		}
-		public void setWriter(String writer) {
-			this.writer = writer;
-		}
-		public String getContent() {
-			return content;
-		}
-		public void setContent(String content) {
-			this.content = content;
-		}
-		public Date getRegDate() {
-			return regDate;
-		}
-		public void setRegDate(Date regDate) {
-			this.regDate = regDate;
-		}
-		public Date getUpdDate() {
-			return updDate;
-		}
-		public void setUpdDate(Date updDate) {
-			this.updDate = updDate;
-		}
 	
+	// 생성자
+	public Board() {
+		this("제목없음", "글쓴이없음", "내용없음");
+	}
+
+	public Board(String title, String writer, String content) {
+		this.title = new SimpleStringProperty(title);
+		this.writer = new SimpleStringProperty(writer);
+		this.content = new SimpleStringProperty(content);
+	}
+
+	
+	
+	
+	public Board(int boardNo, String title, String writer,
+			String content, String regDate, String updDate) {
+		this.boardNo = new SimpleIntegerProperty(boardNo);
+		this.title = new SimpleStringProperty(title);
+		this.writer = new SimpleStringProperty(writer);
+		this.content = new SimpleStringProperty(content);
+		this.regDate = new SimpleStringProperty(regDate);
+		this.updDate = new SimpleStringProperty(updDate);
+	}
+
+	// getter, setter
+	public int getBoardNo() {return boardNo.get();}
+	public void setBoardNo(int boardNo) {this.boardNo = new SimpleIntegerProperty(boardNo);}
+
+	public String getTitle() {return title.get();}
+	public void setTitle(String title) {this.title = new SimpleStringProperty(title);}
+
+	public String getWriter() {return writer.get();}
+	public void setWriter(String writer) {this.writer = new SimpleStringProperty(writer);}
+
+	public String getContent() {return content.get();}
+	public void setContent(String content) {this.content = new SimpleStringProperty(content);}
+
+	public String getRegDate() {return regDate.get();}
+	public void setRegDate(String regDate) {this.regDate = new SimpleStringProperty(regDate);}
+
+	public String getUpdDate() {return updDate.get();}
+	public void setUpdDate(String updDate) {this.updDate = new SimpleStringProperty(updDate);}
+
+	
+	// toString
+	// : 객체를 출력할 때, 지정한 문자열 형식으로 반환하는 메소드
+	// object(최상위클래스)에 정의되어 있으며, 이를 오버라이딩하여 사용한다.
+	@Override
+	public String toString() {
+		return "Board [boardNo=" + boardNo + ", title=" + title + ", writer=" + writer + ", content=" + content
+				+ ", regDate=" + regDate + ", updDate=" + updDate + "]";
+	}
 }
-
-
-
-
-
-
-
