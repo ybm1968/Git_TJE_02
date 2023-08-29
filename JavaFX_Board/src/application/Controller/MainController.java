@@ -50,7 +50,7 @@ public class MainController implements Initializable {
 	@FXML
 	private Button writeButton;
 
-	static int index2; // 지우자
+	
 	List<Board> boardList = new ArrayList<>();
 	static BoardService boardService = new BoardServiceImpl();
 	SceneUtil su = SceneUtil.getInstance();
@@ -92,6 +92,7 @@ public class MainController implements Initializable {
 					stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
 					int index = boardTableView.getSelectionModel().getSelectedItem().getBoardNo();
+					
 					// Sub 씬을 가져오기
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("Read.fxml"));
 
@@ -105,7 +106,7 @@ public class MainController implements Initializable {
 					ReadController subController = loader.getController();
 
 					if (subController != null) {
-						boardService.select(index);
+						subController.select(index);
 					}
 					
 					// switchRead(stage, root, "Read.fxml");
@@ -117,42 +118,16 @@ public class MainController implements Initializable {
 					}
 
 				}
-				if (event.getClickCount() == 1) {
-					index2 = boardTableView.getSelectionModel().getSelectedItem().getBoardNo();
+				
 
 				}
-			}
+			
 
 		});
 
 	}
 
-////	@FXML
-//	public void boardDelete() {
-//		boardDAO.deleteBoard(index2);
-//		boardList = boardDAO.boardList();
-//
-//		observableList = FXCollections.observableArrayList();
-//		observableList.addAll(boardList);
-//		boardTableView.setItems(observableList);
-//	}
-//
-//	public void switcTohWrite(ActionEvent event) throws IOException {
-//		switchScnene(event, "Write.fxml");
-//	}
-//
-//	public void switcTohUpDate(ActionEvent event) throws IOException {
-//		switchScnene(event, "UpDate.fxml");
-//	}
-//
-//	public void switchScnene(ActionEvent event, String fxml) throws IOException {
-//		Parent root = FXMLLoader.load(getClass().getResource(fxml));
-//		scene = new Scene(root);
-//		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//		stage.setScene(scene);
-//		stage.show();
-//	}
-//
+
 //	public void switchRead(Stage stage, Parent root, String fxml) {
 //		scene = new Scene(root);
 //		stage.setScene(scene);

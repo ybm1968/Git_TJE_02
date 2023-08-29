@@ -18,11 +18,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class ReadController {
-	Board selectedBoard;
-	public Connection con;
-	public Statement stmt;
-	public PreparedStatement psmt;
-	public ResultSet rs;
+	
 	@FXML
 	private TextArea contentSee;
 	@FXML
@@ -41,23 +37,21 @@ public class ReadController {
 	private TextField upddateSee;
 	@FXML
 	private TextField writeSee;
-	BoardDAO dao = new BoardDAO();
-	private int boardNo;
-	static int boardNoo;
-
+	
+	static int no;
+	
 	public void select(int boardNo) {
-		this.boardNo = boardNo;
-		boardNoo = boardNo;
-		List<Board> boardList = new ArrayList<Board>();
+		no = boardNo;
+		Board board = new Board();
 //		BoardDAO dao = new BoardDAO();
 
-		selectedBoard = dao.select(boardNo);
-		contentSee.setText(selectedBoard.getContent());
-		writeSee.setText(selectedBoard.getWriter());
-		upddateSee.setText(selectedBoard.getUpdDate() + "");
-		titleSee.setText(selectedBoard.getTitle());
-		regdateSee.setText(selectedBoard.getRegDate() + "");
-		noSee.setText(selectedBoard.getBoardNo() + "");
+		board = MainController.boardService.select(boardNo);
+		contentSee.setText(board.getContent());
+		writeSee.setText(board.getWriter());
+		upddateSee.setText(board.getUpdDate() + "");
+		titleSee.setText(board.getTitle());
+		regdateSee.setText(board.getRegDate() + "");
+		noSee.setText(board.getBoardNo() + "");
 	}
 
 	// 수정버튼 클릭
