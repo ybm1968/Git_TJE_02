@@ -3,13 +3,16 @@ package application.Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
-import application.DAO.BoardDAO;
 import application.DTO.Board;
+import application.Service.BoardService;
+import application.Service.BoardServiceImpl;
 import application.Util.SceneUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class Main implements Initializable {
+public class MainController implements Initializable {
 
 	@FXML
 	private TableColumn<Board, Integer> colBoardNo;
@@ -40,16 +43,16 @@ public class Main implements Initializable {
 
 	@FXML
 	private TableColumn<Board, String> colWriter;
-	
+
 	@FXML
 	private TableView<Board> boardTableView;
 
 	@FXML
 	private Button writeButton;
 
-	static int index2;
-	ArrayList<Board> boardList = new ArrayList<>();
-	static BoardDAO boardDAO = new BoardDAO();
+	static int index2; // 지우자
+	List<Board> boardList = new ArrayList<>();
+	static BoardService boardService = new BoardServiceImpl();
 	SceneUtil su = SceneUtil.getInstance();
 
 	Stage stage;
@@ -58,11 +61,17 @@ public class Main implements Initializable {
 
 	ObservableList<Board> observableList;
 
+	// 게시글 쓰기로 이동
+	@FXML
+	void clickwriteButton(ActionEvent event) throws IOException {
+		SceneUtil.getInstance().switchScene(event, UI.INSERT.getPath());
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		observableList = FXCollections.observableArrayList();
 
-		ArrayList<Board> boardList = boardDAO.boardList();
+		List<Board> boardList = boardService.list();
 		observableList.addAll(boardList);
 
 		colBoardNo.setCellValueFactory(new PropertyValueFactory<>("BoardNo"));
@@ -96,9 +105,16 @@ public class Main implements Initializable {
 					ReadController subController = loader.getController();
 
 					if (subController != null) {
-						subController.readBoard(index);
+						boardService.select(index);
 					}
-					switchRead(stage, root, "Read.fxml");
+					
+					// switchRead(stage, root, "Read.fxml");
+					try {
+						SceneUtil.getInstance().switchScene(event, UI.READ.getPath(), root);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 				}
 				if (event.getClickCount() == 1) {
@@ -110,11 +126,6 @@ public class Main implements Initializable {
 		});
 
 	}
-	
-	
-	
-	
-	
 
 ////	@FXML
 //	public void boardDelete() {

@@ -21,7 +21,7 @@ public class JDBConnection {
 			Class.forName("com.mysql.cj.jdbc.Driver");		 
 			String url = "jdbc:mysql://localhost:3306/joeun?serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true&useSSL=false";
 			String id = "joeun";
-			String pw = "123456";
+			String pw = "12345678";		// 각자 DB 접속 패스워드 입력
 			
 			con = DriverManager.getConnection(url, id, pw);
 			
