@@ -22,7 +22,7 @@ public class InsertController {
 
 	@FXML
 	private TextField writerWrite;
-
+	
 	
 	@FXML
 	void clickWriteDoneBut(ActionEvent event) throws IOException {

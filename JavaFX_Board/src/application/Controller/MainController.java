@@ -94,7 +94,7 @@ public class MainController implements Initializable {
 					int index = boardTableView.getSelectionModel().getSelectedItem().getBoardNo();
 					
 					// Sub 씬을 가져오기
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("Read.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getResource(UI.READ.getPath()));
 
 					try {
 						root = loader.load();
@@ -109,7 +109,7 @@ public class MainController implements Initializable {
 					if (subController != null) {
 						subController.select(index);
 					}
-					 switchRead(stage, root, "Read.fxml");
+					 switchRead(stage, root, UI.READ.getPath());
 //					try {
 //						SceneUtil.getInstance().switchScene(event, UI.READ.getPath(), root);
 //					} catch (IOException e) {

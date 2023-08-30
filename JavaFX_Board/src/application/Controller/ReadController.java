@@ -57,6 +57,10 @@ public class ReadController {
 
 	// 수정버튼 클릭
 	public void updButton1(ActionEvent event) throws IOException {
+		
+		// ReadController 가져오고
+		// boardNo 넘겨줄 메소드를 호출
+		
 		SceneUtil.getInstance().switchScene(event, UI.UPDATE.getPath());
 	}
 
