@@ -45,6 +45,7 @@ public class ReadController {
 		Board board = new Board();
 //		BoardDAO dao = new BoardDAO();
 
+		System.out.println("select(boardNo)");
 		board = MainController.boardService.select(boardNo);
 		contentSee.setText(board.getContent());
 		writeSee.setText(board.getWriter());
@@ -56,7 +57,7 @@ public class ReadController {
 
 	// 수정버튼 클릭
 	public void updButton1(ActionEvent event) throws IOException {
-		SceneUtil.getInstance().switchScene(event, UI.INSERT.getPath());
+		SceneUtil.getInstance().switchScene(event, UI.UPDATE.getPath());
 	}
 
 	// 삭제버튼 클릭

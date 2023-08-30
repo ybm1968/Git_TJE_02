@@ -13,7 +13,7 @@
 <!-- 실제 UI 구조를 정의하는 부분 -->
 <!--  -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.MainController">
    <children>
       <TableView fx:id="boardTableView" layoutX="25.0" layoutY="86.0" prefHeight="300.0" prefWidth="550.0">
         <columns>

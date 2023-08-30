@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class InsertControlller {
+public class InsertController {
 
 	@FXML
 	private TextField contentWrite;

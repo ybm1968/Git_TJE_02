@@ -53,7 +53,7 @@ public class MainController implements Initializable {
 	
 	List<Board> boardList = new ArrayList<>();
 	static BoardService boardService = new BoardServiceImpl();
-	SceneUtil su = SceneUtil.getInstance();
+	// SceneUtil su = SceneUtil.getInstance();
 
 	Stage stage;
 	Scene scene;
@@ -98,6 +98,7 @@ public class MainController implements Initializable {
 
 					try {
 						root = loader.load();
+						System.out.println("더블클릭");
 
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -108,14 +109,13 @@ public class MainController implements Initializable {
 					if (subController != null) {
 						subController.select(index);
 					}
-					
-					// switchRead(stage, root, "Read.fxml");
-					try {
-						SceneUtil.getInstance().switchScene(event, UI.READ.getPath(), root);
-					} catch (IOException e) {
+					 switchRead(stage, root, "Read.fxml");
+//					try {
+//						SceneUtil.getInstance().switchScene(event, UI.READ.getPath(), root);
+//					} catch (IOException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+//						e.printStackTrace();
+//					}
 
 				}
 				
@@ -128,9 +128,9 @@ public class MainController implements Initializable {
 	}
 
 
-//	public void switchRead(Stage stage, Parent root, String fxml) {
-//		scene = new Scene(root);
-//		stage.setScene(scene);
-//		stage.show();
-//	}
+	public void switchRead(Stage stage, Parent root, String fxml) {
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
 }
